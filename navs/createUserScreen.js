@@ -30,7 +30,7 @@ export default CreateUser = ({navigation, route}) => {
         <View style={{marginTop: 16, padding: 16, flex: 1}}>
             <TextInput
                 name='username'
-                label='Username'
+                label='Customer name...'
                 mode='outlined'
                 outlineColor={Colors.green800}
                 activeOutlineColor={Colors.green800}
@@ -61,14 +61,16 @@ export default CreateUser = ({navigation, route}) => {
                 onDismiss={() => {
                     if (info.code) {
                         setShow(false)
-                        navigation.navigate('Home', {...route.params, refresh: true});
+                        navigation.navigate('Home', {...route.params, refresh: true})
                     } else {
                         setShow(true)
                         setInfo(false)
                     }
                 }}
             >
+                <Button icon='information' mode='text' labelStyle={{ color: (info.code)? '#fff': Colors.red500, fontSize: 16, margin: 0, padding: 0 }} uppercase={false}>
                     {info.msg}
+                </Button>
             </Snackbar>
             }
         </View>

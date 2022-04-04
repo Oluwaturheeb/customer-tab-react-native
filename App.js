@@ -32,7 +32,8 @@ const App = () => {
         username();
     }, []);
 
-    function Header ({nav}) {
+    function Header ({nav, header, pageName, icon}) {
+        let style = (pageName) ? 16 : 14;
         return (
             <View style={{paddingTop: 5, paddingBottom: 10, justifyContent: 'space-between', flexDirection: 'row', flex: 1, alignItems: 'center', marginRight: 20}}>
                 <View>
@@ -40,10 +41,12 @@ const App = () => {
                         color: Colors.green800,
                         fontSize: 24,
                         fontWeight: 'bold',
-                    }}>Customers List</Text>
-                    <Text style={{fontSize: 14}}>{(getUser) ? getUser.email : ''}</Text>
+                    }}>{header}</Text>
+                    <Text style={{fontSize: style}}>
+                        {(pageName) ? pageName : (getUser) ? getUser.email : ''}
+                    </Text>
                 </View>
-                <IconButton onPress={() => nav.navigate('About')} icon='information-outline' color={Colors.green800} />
+                {(icon) ? <IconButton onPress={() => nav.navigate('About')} icon='information-outline' color={Colors.green800} /> : false}
             </View>
         )
     }
@@ -54,57 +57,32 @@ const App = () => {
                 <Stack.Screen name='Welcome' component={Welcome} options={{ headerShown: false }} />
                 <Stack.Screen name='Home' component={Home}
                     options={({navigation}) => ({
-                        title: 'Customers List',
-                        headerStyle: {
-                            color: Colors.green800,
-                            fontSize: 22,
-                        },
-                        headerTitle: () => <Header nav={navigation} />
+                        headerTitle: () => <Header icon={true} header='Customers List' nav={navigation}/>
                     })}
                 />
                 <Stack.Screen name='CreateItem' component={CreateItem}
                     options={{
-                        title: 'Add To Tab',
-                        headerStyle: {
-                            color: Colors.green800,
-                            fontSize: 22,
-                        },
+                        headerTitle: () => <Header pageName='Add To Tab' header='Customers Tab'/>
                     }}
                 />
                 <Stack.Screen name='UpdateItem' component={UpdateItem}
                     options={{
-                        title: 'Update Payment',
-                        headerStyle: {
-                            color: Colors.green800,
-                            fontSize: 22,
-                        },
+                        headerTitle: () => <Header pageName='Update Payment' header='Customers Tab'/>
                     }}
                 />
                 <Stack.Screen name='CreateUser' component={CreateUser}
                     options={{
-                        title: 'Add Customer',
-                        headerStyle: {
-                            color: Colors.green800,
-                            fontSize: 22,
-                        },
+                        headerTitle: () => <Header pageName='Add Customer' header='Customers Tab'/>
                     }}
                 />
                 <Stack.Screen name='CustomerInfo' component={CustomerInfo}
                     options={{
-                        title: 'Customer Info',
-                        headerStyle: {
-                            color: Colors.green800,
-                            fontSize: 22,
-                        },
+                        headerTitle: () => <Header pageName='Customer Info' header='Customers Tab'/>
                     }}
                 />
                 <Stack.Screen name='About' component={About}
                     options={{
-                        title: 'About',
-                        headerStyle: {
-                            color: Colors.green800,
-                            fontSize: 22,
-                        },
+                        headerTitle: () => <Header pageName='About' header='Customers Tab'/>
                     }}
                 />
             </Stack.Navigator>

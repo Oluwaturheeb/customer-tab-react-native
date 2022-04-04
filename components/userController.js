@@ -49,7 +49,7 @@ export const userinfo = async id => {
             return {
                 code: 1,
                 msg: 'List is empty',
-                total: 0
+                total: money(0)
             };
         else {
             const extract = db => {
@@ -97,14 +97,12 @@ export const userreset = async (id, type = 1, remove = false) => {
             payment: field.delete(),
         });
 
-        if (remove)
-            if (up) {
-                up = await db.doc(id).delete();
-                if (up) return {code: 1, msg: 'Customer has been removed successfully!'};
-            }
+        if (remove){
+            await db.doc(id).delete();
+            return {code: 1, msg: 'Customer has been removed successfully!'};
+        }
 
-        if (up) return {code: 1, msg: 'Reset successfully!'};
-        else console.log(up, 'unknown error!');
+        return {code: 1, msg: 'Reset successfully!'};
     } catch (e) {
         return { code: 0, msg: 'Unknown error!' };
     }

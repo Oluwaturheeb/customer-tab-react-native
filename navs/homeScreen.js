@@ -1,6 +1,6 @@
 // /* eslint-disable prettier/prettier */
 import React, { useEffect, useState, useMemo, useCallback } from 'react';
-import { SafeAreaView, Text, StyleSheet, Alert, FlatList, TouchableNativeFeedback, TouchableHighlight, View, Dimensions } from 'react-native';
+import { SafeAreaView, Text, StyleSheet, Alert, FlatList, TouchableNativeFeedback, TouchableHighlight, View, Dimensions, TouchableWithoutFeedback } from 'react-native';
 import { CommonActions } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Colors, Button, Provider, Portal, Modal, IconButton, BottomNavigation } from 'react-native-paper';
@@ -106,9 +106,14 @@ const Home = ({ navigation, route }) => {
 
     const ItemModal = () => {
         const resetTab = async (rm = false) => {
-            let req = await userreset(route.params.cid, route.params.type, rm);
-            Alert.alert('Reset customer tab', req.msg);
-            setRefresh(true);
+            try {
+                let req = await userreset(route.params.cid, route.params.type, rm);
+                Alert.alert('Reset customer tab', req.msg);
+                setRefresh(true);
+
+            } catch (e) {
+                // console.log(e.message)
+            }
         }
         return (
             <Provider>
@@ -246,6 +251,7 @@ const Home = ({ navigation, route }) => {
     }
 
     const ShowData = () => {
+        console.log(userList)
         return (<View>
             {(typeof userList === 'number') ?
                 <NoNetwork str={userList} />
@@ -257,7 +263,7 @@ const Home = ({ navigation, route }) => {
                         <>
                             {(userList.msg) ?
                                 <View style={{ alignItems: 'center' }}>
-                                    <Icon name="groups" size={172} color={Colors.green500} />
+                                    <Icon name="account-group-outline" size={172} color={Colors.green500} />
                                     <Text style={{ fontSize: 20, color: Colors.green500 }}>{userList.msg}</Text>
                                 </View>
                                 :
@@ -288,6 +294,9 @@ const Home = ({ navigation, route }) => {
                 <View>
                     <TouchableHighlight style={style.addBtn} onPress={gotoCreateUser}>
                         <Text style={style.addBtnText}>+</Text>
+                    </TouchableHighlight>
+                    <TouchableHighlight style={style.BNS}>
+                        <Text></Text>
                     </TouchableHighlight>
                 </View>
             }
@@ -334,6 +343,18 @@ const style = StyleSheet.create({
         backgroundColor: Colors.green700,
         zIndex: 0,
         elevation: 10,
+    },
+    BNS: {
+        borderBottomEndRadius: 100,
+        borderBottomStartRadius: 100,
+        height: 40,
+        width: 80,
+        position: 'absolute',
+        bottom: 20,
+        left: btnWidthCal - 35,
+        backgroundColor: Colors.grey100,
+        zIndex: -1,
+        elevation: 1,
     },
     addBtnText: {
         fontSize: 32,
