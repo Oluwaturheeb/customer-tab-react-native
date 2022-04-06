@@ -1,1 +1,0 @@
-psql -h ec2-3-224-157-224.compute-1.amazonaws.com -d d84jeqbqntd9h2 -U jlfijqrgolbmcb -p 5432 -W a36939de2968548964b85d183f03ebf545704829618c0e60092894ac6c3761a2

@@ -16,6 +16,8 @@ target 'customerTab' do
 
   pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-async-storage/async-storage'
 
+  pod 'RNScreens', :path => '../node_modules/react-native-screens'
+
   target 'customerTabTests' do
     inherit! :complete
     # Pods for testing

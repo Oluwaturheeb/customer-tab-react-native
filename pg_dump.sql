@@ -1,2 +1,0 @@
-CREATE TABLE public.users (id bigserial primary key,account numeric NOT NULL,name varchar(60) NOT NULL); 
- CREATE TABLE public.tab (id bigserial NOT NULL, user_id numeric NOT NULL, total bigint DEFAULT 0, paid bigint DEFAULT 0, description text NULL, timeadded timestamp DEFAULT now());
