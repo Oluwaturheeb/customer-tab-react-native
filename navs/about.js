@@ -14,7 +14,7 @@ const About = () => {
             </View>
             <View style={{ marginTop: 20 }}>
                 <Text style={css.txt}>
-                    This application is available for both Android and Web platform. This app free to download and free to use.
+                    This application is available for both Android and Web platform. This app is free to download and free to use.
                 </Text>
                 <View style={css.txtUrl}>
                     <Text>Android: </Text>

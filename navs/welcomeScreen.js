@@ -66,7 +66,7 @@ const Welcome = ({navigation}) => {
     const WelcomeScreen = () => {
         return (
             // <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-                <ImageBackground source={require('./img/ic_launcher.png')} style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+                <ImageBackground source={require('./img/ic_launcher.jpg')} style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
                     <Text style={{fontSize: 40, color: Colors.green800, fontWeight: 'bold'}}>
                         Customer's Tab
                     </Text>
