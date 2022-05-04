@@ -251,7 +251,6 @@ const Home = ({ navigation, route }) => {
     }
 
     const ShowData = () => {
-        console.log(userList)
         return (<View>
             {(typeof userList === 'number') ?
                 <NoNetwork str={userList} />
@@ -339,7 +338,7 @@ const style = StyleSheet.create({
         width: 50,
         position: 'absolute',
         bottom: 35,
-        left: btnWidthCal - 20,
+        left: btnWidthCal - 25,
         backgroundColor: Colors.green700,
         zIndex: 0,
         elevation: 10,
@@ -351,7 +350,7 @@ const style = StyleSheet.create({
         width: 80,
         position: 'absolute',
         bottom: 20,
-        left: btnWidthCal - 35,
+        left: btnWidthCal - 40,
         backgroundColor: Colors.grey100,
         zIndex: -1,
         elevation: 1,

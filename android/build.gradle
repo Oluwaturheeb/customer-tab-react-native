@@ -7,14 +7,18 @@ buildscript {
         compileSdkVersion = 30
         targetSdkVersion = 30
         ndkVersion = "21.4.7075529"
+        kotlinVersion = '1.6.21'
     }
+    // ext.kotlin_version = 
     repositories {
+        jcenter()
         google()
         mavenCentral()
     }
     dependencies {
         classpath("com.android.tools.build:gradle:4.2.2")
         classpath 'com.google.gms:google-services:4.3.10'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -24,6 +28,7 @@ allprojects {
     repositories {
         mavenCentral()
         mavenLocal()
+        jcenter()
         maven {
             // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
             url("$rootDir/../node_modules/react-native/android")
